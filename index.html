@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>11 Days for Kannu</title>
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <!-- PASSWORD SCREEN -->
+
+    <main class="welcome-container" id="welcomeScreen">
+
+        <div class="stars">✦　✧　✦</div>
+
+        <p class="small-heading">A LITTLE SOMETHING FOR YOU</p>
+
+        <h1>Hey, Kannu!</h1>
+
+        <p class="subtitle">
+            11 days. 11 surprises.<br>
+            And a little journey made just for you.
+        </p>
+
+        <div class="lock-icon">✦</div>
+
+        <h2>One little secret...</h2>
+
+        <p class="instruction">
+            Enter the special word to begin.
+        </p>
+
+        <form id="passwordForm">
+
+            <input
+                type="password"
+                id="secretPassword"
+                placeholder="Your secret word"
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit">Unlock ✨</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <footer>MADE WITH A LITTLE EXTRA CARE ♡</footer>
+
+    </main>
+
+
+    <!-- DASHBOARD -->
+
+    <main class="dashboard" id="dashboard" hidden>
+
+        <header class="dashboard-header">
+
+            <p class="small-heading">YOUR LITTLE BIRTHDAY JOURNEY</p>
+
+            <h1>11 Days for Kannu</h1>
+
+            <p class="subtitle">
+                One day. One surprise. A little memory to keep.
+            </p>
+
+            <div class="progress-box">
+                <span id="progressText">0 of 11 surprises opened</span>
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <section class="day-grid" id="dayGrid">
+
+            <article class="day-card" data-day="1">
+                <span class="day-number">01</span>
+                <h3>The Beginning</h3>
+                <p>Something special starts here.</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="2">
+                <span class="day-number">02</span>
+                <h3>Rush vs Camp</h3>
+                <p>Ready for the battle?</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="3">
+                <span class="day-number">03</span>
+                <h3>Know Yourself</h3>
+                <p>How well do you know Kannu?</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="4">
+                <span class="day-number">04</span>
+                <h3>Secret Inside Joke</h3>
+                <p>Only you know this one.</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="5">
+                <span class="day-number">05</span>
+                <h3>Kannu Awards</h3>
+                <p>Featuring THE RATHOD.</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="6">
+                <span class="day-number">06</span>
+                <h3>Survival Test</h3>
+                <p>Can you survive these questions?</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="7">
+                <span class="day-number">07</span>
+                <h3>Things About You</h3>
+                <p>Five things you should know.</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="8">
+                <span class="day-number">08</span>
+                <h3>Our Memory</h3>
+                <p>Piece by piece. 🧩</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="9">
+                <span class="day-number">09</span>
+                <h3>Open When You Need It</h3>
+                <p>A little reminder for you.</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="10">
+                <span class="day-number">10</span>
+                <h3>Birthday Eve</h3>
+                <p>Almost time, Kannu!</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+            <article class="day-card" data-day="11">
+                <span class="day-number">11</span>
+                <h3>The Grand Birthday</h3>
+                <p>Your special day is here!</p>
+                <button class="day-button" disabled>Locked 🔒</button>
+            </article>
+
+        </section>
+
+        <footer>MADE WITH A LITTLE EXTRA CARE ♡</footer>
+
+    </main>
+
+    <script src="assets/script.js"></script>
+
+</body>
+</html>
