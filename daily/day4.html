@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 4 - Secret Inside Joke</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:20px;display:flex;
+ align-items:center;justify-content:center;font-family:Arial,sans-serif;
+ color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)
+}
+.container{
+ width:100%;max-width:600px;padding:35px 25px;text-align:center;
+ border-radius:24px;background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,255,255,.15)
+}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1{color:#f5df65}
+.subtitle{color:#d8d4ec;line-height:1.7}
+.spider{font-size:65px;margin:15px;animation:swing 2s infinite ease-in-out}
+@keyframes swing{
+ 0%,100%{transform:rotate(-10deg)}
+ 50%{transform:rotate(10deg)}
+}
+input{
+ width:100%;padding:15px;margin-top:20px;border:1px solid #625b88;
+ border-radius:12px;background:#17172e;color:white;font-size:16px;outline:none
+}
+button{
+ margin-top:15px;padding:13px 25px;border:0;border-radius:30px;
+ background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer
+}
+button:hover{background:#ffe987;transform:scale(1.03)}
+#message{color:#f5df65;margin-top:20px;min-height:25px}
+#reveal{
+ display:none;margin-top:25px;padding:20px;border-radius:16px;
+ background:rgba(245,223,101,.1);animation:appear 1s ease
+}
+@keyframes appear{
+ from{opacity:0;transform:scale(.7)}
+ to{opacity:1;transform:scale(1)}
+}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+ <div class="tag">DAY 04 · CLASSIFIED MEMORY</div>
+ <div class="spider">🕷️</div>
+ <h1>Secret Inside Joke</h1>
+
+ <p class="subtitle">
+  Kannu, ek sentence yaad chhe?<br>
+  Aapdi ek evi memory je yaad aave etle hasi aavi jaay! 😂
+ </p>
+
+ <h3>Complete this legendary sentence...</h3>
+ <h2 style="color:#f5df65">Me to ______ bani gyi!</h2>
+
+ <p style="color:#d8d4ec">Hint: Your favourite superhero 🕷️</p>
+
+ <input type="text" id="answer"
+  placeholder="Type your answer here..." autocomplete="off">
+
+ <button onclick="checkAnswer()">Unlock Secret ✨</button>
+ <p id="message"></p>
+
+ <div id="reveal">
+  <div style="font-size:65px">🕷️😂💜</div>
+  <h2 style="color:#f5df65">SPIDERMAN BANI GYI!</h2>
+  <p>
+   HAHAHA! 😭😂<br><br>
+   Finally, someone remembers this legendary moment!
+   <br><br>
+   Some jokes are too iconic to ever forget.
+   <br><br>
+   Day 4 unlocked. 💜
+  </p>
+ </div>
+
+ <a class="back" href="../index.html">← Back to surprises</a>
+</div>
+
+<script>
+function checkAnswer(){
+ const answer=document.getElementById("answer").value.trim().toLowerCase();
+ const correctAnswer="spiderman";
+
+ if(answer===correctAnswer){
+  document.getElementById("message").textContent=
+   "CORRECT ANSWER! SECRET UNLOCKED! 🎉";
+  document.getElementById("reveal").style.display="block";
+  document.getElementById("answer").disabled=true;
+ }else{
+  document.getElementById("message").textContent=
+   "Wrong answer, Kannu! 😂 Try again. Hint: 🕷️";
+ }
+}
+</script>
+</body>
+</html>

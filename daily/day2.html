@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 - Rush vs Camp</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:20px;display:flex;
+ align-items:center;justify-content:center;font-family:Arial,sans-serif;
+ color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)
+}
+.container{
+ width:100%;max-width:600px;padding:35px 25px;text-align:center;
+ border-radius:24px;background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,255,255,.15)
+}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1{color:#f5df65}
+.subtitle{color:#d8d4ec;line-height:1.7}
+.question{font-size:21px;margin:30px 0 20px}
+.options{display:grid;gap:12px}
+.option{
+ background:#29264b;color:white;border:1px solid #625b88;
+ padding:15px;border-radius:12px;cursor:pointer;font-size:15px
+}
+.option:hover{background:#48406f}
+.option:disabled{opacity:.8;cursor:default}
+#feedback{color:#f5df65;margin-top:20px;min-height:25px}
+.next{
+ display:none;background:#f5df65;color:#17172e;border:0;
+ padding:13px 25px;border-radius:30px;font-weight:bold;cursor:pointer
+}
+#result{display:none;line-height:1.8}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+ <div id="quiz">
+  <div class="tag">DAY 02 · FREE FIRE SPECIAL</div>
+  <h1>Rush vs Camp 🎮</h1>
+  <p class="subtitle">
+   Ready, Kannu?<br>
+   Let's see how well you know your legendary gaming skills! 😂
+  </p>
+  <p id="counter">Question 1 of 5</p>
+  <h2 class="question" id="question"></h2>
+  <div class="options" id="options"></div>
+  <p id="feedback"></p>
+  <button class="next" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+ </div>
+
+ <div id="result">
+  <div class="tag">MISSION COMPLETED</div>
+  <h1>BOOYAH! 🏆</h1>
+  <p>
+   Congratulations, Kannu! 😂<br><br>
+   Your Free Fire skills might be legendary...
+   but your answers are even more unpredictable!
+   <br><br>
+   Keep rushing, keep laughing, and please stop getting knocked first. 😭
+  </p>
+  <h2 style="color:#f5df65">THE LEGENDARY RUSHER 👑</h2>
+  <p>Day 2 complete. See you tomorrow! 💜</p>
+ </div>
+ <a class="back" href="../index.html">← Back to surprises</a>
+</div>
+
+<script>
+const questions=[
+ {q:"1. What is your favourite gaming strategy?",
+  options:["Rush without thinking 😂","Camp and survive 🏕️","Hide until everyone dies 😭"],
+  feedback:"We both know you are going to rush anyway! 😂"},
+ {q:"2. What happens when you see an enemy?",
+  options:["Direct rush 🔫","First take cover","Panic and run 🏃"],
+  feedback:"Enemy spotted = Kannu activated! 💀"},
+ {q:"3. Who is more likely to get knocked first?",
+  options:["You, obviously 😭","Me, obviously 😂","Both of us together"],
+  feedback:"Teamwork makes the dream work... even in getting knocked! 🤝"},
+ {q:"4. What do you say after losing a match?",
+  options:["Lag tha! 😤","Team noob hai!","One more match!"],
+  feedback:"One more match? We all know that means ten more! 😂"},
+ {q:"5. What matters more in Free Fire?",
+  options:["Booyah 🏆","Kills 🔥","Playing together 💜"],
+  feedback:"Okay, that was actually a sweet answer!"}
+];
+let currentQuestion=0;
+
+function showQuestion(){
+ const q=questions[currentQuestion];
+ document.getElementById("counter").textContent=
+  "Question "+(currentQuestion+1)+" of 5";
+ document.getElementById("question").textContent=q.q;
+ document.getElementById("feedback").textContent="";
+ document.getElementById("nextBtn").style.display="none";
+ const box=document.getElementById("options");
+ box.innerHTML="";
+ q.options.forEach(function(option){
+  const button=document.createElement("button");
+  button.className="option";
+  button.textContent=option;
+  button.onclick=function(){chooseAnswer(q.feedback)};
+  box.appendChild(button);
+ });
+}
+function chooseAnswer(feedback){
+ document.querySelectorAll(".option").forEach(b=>b.disabled=true);
+ document.getElementById("feedback").textContent=feedback;
+ document.getElementById("nextBtn").style.display="inline-block";
+}
+function nextQuestion(){
+ currentQuestion++;
+ if(currentQuestion<questions.length){showQuestion();}
+ else{
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("result").style.display="block";
+ }
+}
+showQuestion();
+</script>
+</body>
+</html>

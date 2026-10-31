@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 6 - Kannu Survival Test</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:20px;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)}
+.container{width:100%;max-width:600px;padding:35px 25px;text-align:center;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15)}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1{color:#f5df65}
+p{color:#d8d4ec;line-height:1.8}
+.question{font-size:21px;margin:30px 0 20px}
+.options{display:grid;gap:12px}
+.option{padding:15px;border-radius:12px;border:1px solid #625b88;background:#29264b;color:white;cursor:pointer}
+.option:disabled{opacity:.8}
+#feedback{color:#f5df65;min-height:25px}
+.next{display:none;margin-top:15px;padding:13px 25px;border:0;border-radius:30px;background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer}
+#result{display:none;line-height:1.8}
+.certificate{padding:25px;margin-top:20px;border:2px solid #f5df65;border-radius:18px}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="quiz">
+<div class="tag">DAY 06 · SURVIVAL CHALLENGE</div>
+<h1>The Kannu Survival Test 🎮</h1>
+<p>Think you can survive these 5 situations, Kannu? Let's test your patience! 😂</p>
+<p id="counter">Situation 1 of 5</p>
+<h2 class="question" id="question"></h2>
+<div class="options" id="options"></div>
+<p id="feedback"></p>
+<button class="next" id="nextBtn" onclick="nextQuestion()">Next Situation →</button>
+</div>
+<div id="result">
+<div class="tag">SURVIVAL REPORT</div>
+<h1>YOU SURVIVED! 🏆</h1>
+<div class="certificate">
+<div style="font-size:65px">🏅</div>
+<h2 style="color:#f5df65">OFFICIAL KANNU SURVIVOR</h2>
+<p>This certificate is awarded to Kannu for surviving 5 extremely unnecessary situations. 😂</p>
+<h2 style="color:#f5df65">MISSION PASSED!</h2>
+</div>
+<p>Congratulations! You survived... somehow. 😂<br><br>Your patience deserves an award. Your pagalpan deserves a separate award. 😭<br><br>Day 6 complete! 💜</p>
+</div>
+<a class="back" href="../index.html">← Back to surprises</a>
+</div>
+<script>
+const questions=[
+{q:"1. Your best friend says 'I need to tell you something'...",options:["What happened?! 😳","Okay, tell me","First give me the full story 😂"],feedback:"The curiosity is REAL! You need the full story immediately. 😂"},
+{q:"2. Your Free Fire teammate gets knocked...",options:["Rush to save them 🔥","Run away and survive 🏃","Blame the teammate 😭"],feedback:"A true gamer never misses a chance to blame lag! 😂"},
+{q:"3. Someone irritates you for no reason...",options:["Ignore them 😎","Give them a lecture","Become even more irritating 😂"],feedback:"Congratulations, you've officially become the problem! 😭"},
+{q:"4. You have an important task but feel lazy...",options:["Do it immediately","I'll do it tomorrow","First take a small break... for 3 hours 😂"],feedback:"That small break has officially become a holiday! 😂"},
+{q:"5. Your friend asks, 'Are you okay?'...",options:["I'm fine","Nothing happened","Long story... sit down 😭"],feedback:"Sometimes one question opens a whole documentary! 😂"}
+];
+let currentQuestion=0;
+function showQuestion(){
+const q=questions[currentQuestion];
+document.getElementById("counter").textContent="Situation "+(currentQuestion+1)+" of 5";
+document.getElementById("question").textContent=q.q;
+document.getElementById("feedback").textContent="";
+document.getElementById("nextBtn").style.display="none";
+const box=document.getElementById("options");box.innerHTML="";
+q.options.forEach(option=>{
+const b=document.createElement("button");b.className="option";b.textContent=option;
+b.onclick=()=>chooseAnswer(q.feedback);box.appendChild(b);
+});
+}
+function chooseAnswer(feedback){
+document.querySelectorAll(".option").forEach(b=>b.disabled=true);
+document.getElementById("feedback").textContent=feedback;
+document.getElementById("nextBtn").style.display="inline-block";
+}
+function nextQuestion(){
+currentQuestion++;
+if(currentQuestion<questions.length)showQuestion();
+else{document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";}
+}
+showQuestion();
+</script>
+</body>
+</html>

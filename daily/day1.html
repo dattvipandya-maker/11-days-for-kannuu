@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 - The Beginning</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:20px;display:flex;
+ align-items:center;justify-content:center;
+ font-family:Arial,sans-serif;color:white;
+ background:linear-gradient(135deg,#10152f,#30234e,#171b38)
+}
+.container{
+ width:100%;max-width:600px;padding:35px 25px;text-align:center;
+ border-radius:24px;background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,255,255,.15)
+}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1,h2{color:#f5df65}
+p{color:#d8d4ec;line-height:1.8}
+.letter{
+ margin:25px 0;padding:22px;text-align:left;line-height:1.9;
+ background:rgba(255,255,255,.06);border-radius:16px
+}
+button{
+ margin-top:15px;padding:13px 25px;border:0;border-radius:30px;
+ background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer
+}
+#hint{
+ display:none;margin-top:20px;padding:20px;border-radius:15px;
+ background:rgba(245,223,101,.1);line-height:1.8;
+ animation:reveal 1s ease
+}
+@keyframes reveal{
+ from{opacity:0;transform:scale(.7)}
+ to{opacity:1;transform:scale(1)}
+}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+ <div class="tag">DAY 01 · THE BEGINNING</div>
+ <h1>Hey, Kannu! 💌</h1>
+ <p>So... your birthday month is finally here!</p>
+
+ <div class="letter">
+  So Kannu, finally! Your birthday month is here. 😂<br><br>
+  But who said celebrations have to last just one day?
+  I've got 11 little surprises waiting for you.<br><br>
+  Some are funny, some are personal, and some might
+  make you smile a little extra.<br><br>
+  So get ready. Your 11-day birthday journey starts now! 💜
+ </div>
+
+ <h2>One little mystery... 👀</h2>
+ <p>Before you leave, unlock your first hint.</p>
+
+ <button onclick="revealHint()">Reveal Day 2 Hint ✨</button>
+
+ <div id="hint">
+  <div style="font-size:50px">🎮🔥</div>
+  <h2>Get Ready, Rusher!</h2>
+  Someone is coming to challenge your legendary
+  Free Fire skills. 😂
+  <br><br>
+  See you tomorrow, Kannu!
+ </div>
+
+ <a class="back" href="../index.html">← Back to surprises</a>
+</div>
+
+<script>
+function revealHint(){
+ document.getElementById("hint").style.display="block";
+}
+</script>
+</body>
+</html>

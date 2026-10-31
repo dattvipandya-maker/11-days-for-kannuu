@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 7 - Things You Don't Know</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:20px;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)}
+.container{width:100%;max-width:600px;padding:35px 25px;text-align:center;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15)}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1,h2{color:#f5df65}
+p{color:#d8d4ec;line-height:1.8}
+button{padding:14px 25px;border:0;border-radius:30px;background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer}
+#quality{display:none;margin:25px 0;padding:25px;border-radius:18px;background:rgba(245,223,101,.1);animation:show .6s ease}
+@keyframes show{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="tag">DAY 07 · A LITTLE REMINDER</div>
+<h1>Things You Don't Know About Yourself ❤️</h1>
+<p>Kannu, sometimes we don't notice our own good qualities. So today, let me remind you of a few. 💜</p>
+<div id="quality">
+<h2 id="heading"></h2>
+<p id="description"></p>
+</div>
+<button id="revealBtn" onclick="nextQuality()">Show Me ✨</button>
+<p id="count">5 little reminders waiting for you...</p>
+<a class="back" href="../index.html">← Back to surprises</a>
+</div>
+<script>
+const qualities=[
+["You are caring. 💜","Even when you don't say much, your actions show that you care."],
+["You make people laugh. 😂","Your pagalpan has a special talent for making ordinary moments funny."],
+["You are stronger than you think. ✨","You handle more than you give yourself credit for."],
+["You have a soft side. 🥹","Behind all the jokes and teasing, there's a genuinely sweet person."],
+["You matter. ❤️","Never underestimate the difference your presence makes in someone's life."]
+];
+let index=0;
+function nextQuality(){
+if(index<qualities.length){
+document.getElementById("quality").style.display="block";
+document.getElementById("heading").textContent=qualities[index][0];
+document.getElementById("description").textContent=qualities[index][1];
+index++;
+document.getElementById("count").textContent=index+" of 5 reminders revealed";
+if(index===qualities.length)document.getElementById("revealBtn").textContent="Read Again 💜";
+}else{
+index=0;
+document.getElementById("quality").style.display="none";
+document.getElementById("count").textContent="5 little reminders waiting for you...";
+document.getElementById("revealBtn").textContent="Show Me ✨";
+}
+}
+</script>
+</body>
+</html>

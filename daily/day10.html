@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 10 - Birthday Eve</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:20px;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)}
+.container{width:100%;max-width:600px;padding:35px 25px;text-align:center;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15)}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1,h2{color:#f5df65}
+p{color:#d8d4ec;line-height:1.8}
+.moon{font-size:75px;animation:float 3s infinite ease-in-out}
+@keyframes float{50%{transform:translateY(-12px)}}
+.countdown{display:flex;justify-content:center;gap:12px;margin:25px 0}
+.time{background:#29264b;border:1px solid #625b88;padding:15px;border-radius:12px;min-width:75px}
+.time strong{display:block;font-size:25px;color:#f5df65}
+.time span{font-size:11px;color:#d8d4ec}
+button{padding:14px 25px;border:0;border-radius:30px;background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer}
+#message{display:none;margin-top:25px;padding:20px;background:rgba(245,223,101,.1);border-radius:15px}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="tag">DAY 10 · THE NIGHT BEFORE</div>
+<div class="moon">🌙</div>
+<h1>It's Almost Your Day, Kannu!</h1>
+<p>One more sleep. One more day. And then... YOUR DAY! 🎂</p>
+<div class="countdown">
+<div class="time"><strong id="hours">--</strong><span>HOURS</span></div>
+<div class="time"><strong id="minutes">--</strong><span>MINUTES</span></div>
+<div class="time"><strong id="seconds">--</strong><span>SECONDS</span></div>
+</div>
+<p id="status">Counting down to November 11, 2026 💜</p>
+<button onclick="revealMessage()">A Little Birthday Eve Message ✨</button>
+<div id="message">
+<h2>Hey Birthday Boy! 🥹</h2>
+<p>
+Tomorrow is all about you!<br><br>
+I hope the coming year brings you happiness, good health,
+new adventures and countless reasons to smile.
+<br><br>
+And please, don't forget to enjoy your day.
+You've got 11 surprises waiting for you! 😂💜
+</p>
+</div>
+<a class="back" href="../index.html">← Back to surprises</a>
+</div>
+<script>
+function updateCountdown(){
+const target=new Date("2026-11-11T00:00:00+05:30").getTime();
+const now=Date.now();
+const distance=target-now;
+if(distance<=0){
+document.getElementById("hours").textContent="00";
+document.getElementById("minutes").textContent="00";
+document.getElementById("seconds").textContent="00";
+document.getElementById("status").textContent="IT'S YOUR BIRTHDAY! 🎂";
+return;
+}
+document.getElementById("hours").textContent=String(Math.floor(distance/3600000)).padStart(2,"0");
+document.getElementById("minutes").textContent=String(Math.floor((distance%3600000)/60000)).padStart(2,"0");
+document.getElementById("seconds").textContent=String(Math.floor((distance%60000)/1000)).padStart(2,"0");
+}
+function revealMessage(){
+document.getElementById("message").style.display="block";
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>

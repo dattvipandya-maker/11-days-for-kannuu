@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 - Kannu Awards 2026</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:25px 15px;display:flex;
+ align-items:center;justify-content:center;font-family:Arial,sans-serif;
+ color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)
+}
+.container{
+ width:100%;max-width:620px;padding:35px 25px;text-align:center;
+ border-radius:24px;background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,255,255,.15)
+}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1{color:#f5df65}
+.subtitle{color:#d8d4ec;line-height:1.7}
+.trophy{font-size:65px;margin:15px}
+.award{
+ padding:18px;margin:15px 0;border-radius:15px;
+ background:#29264b;border:1px solid #625b88;
+ animation:appear .6s ease
+}
+.award h3{color:#f5df65;margin:8px 0}
+.award p{color:#d8d4ec;margin-bottom:0;line-height:1.5}
+button{
+ margin-top:20px;padding:14px 28px;border:0;border-radius:30px;
+ background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer;font-size:15px
+}
+#awards{display:none}
+#special{
+ display:none;padding:30px 15px;margin-top:20px;
+ border:2px solid #f5df65;border-radius:20px;
+ background:rgba(245,223,101,.1);animation:grandReveal 1s ease
+}
+#special h1{font-size:38px;letter-spacing:4px}
+@keyframes appear{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@keyframes grandReveal{
+ 0%{opacity:0;transform:scale(.5) rotate(-5deg)}
+ 70%{transform:scale(1.05)}
+ 100%{opacity:1;transform:scale(1)}
+}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+
+ <div class="tag">DAY 05 · ANNUAL AWARDS</div>
+ <div class="trophy">🏆</div>
+
+ <div id="intro">
+  <h1>KANNU AWARDS 2026</h1>
+  <p class="subtitle">
+   And the awards go to...<br>
+   The one and only Kannu! 😂
+   <br><br>
+   A year full of pagalpan deserves some very special awards.
+  </p>
+  <button onclick="showAwards()">Present My Awards ✨</button>
+ </div>
+
+ <div id="awards">
+  <h1>Congratulations, Kannu! 🎉</h1>
+
+  <div class="award">
+   <h3>😂 World's Biggest Paglu</h3>
+   <p>For being professionally pagal, 24/7.</p>
+  </div>
+
+  <div class="award">
+   <h3>🤐 Professional Problem Hider</h3>
+   <p>For saying "kuch nahi" when there's clearly something.</p>
+  </div>
+
+  <div class="award">
+   <h3>🎮 Best Free Fire Rusher</h3>
+   <p>For rushing first and thinking later.</p>
+  </div>
+
+  <div class="award">
+   <h3>💜 Cutest Irritating Human</h3>
+   <p>For irritating people and still being lovable.</p>
+  </div>
+
+  <div class="award">
+   <h3>👑 My Favourite Idiot</h3>
+   <p>No explanation needed. The title says it all!</p>
+  </div>
+
+  <p style="color:#d8d4ec">
+   But wait... there's ONE final award!
+  </p>
+
+  <button onclick="revealSpecial()">Reveal Special Award 👀</button>
+
+  <div id="special">
+   <div style="font-size:65px">👑🏆</div>
+   <p style="color:#f5df65;letter-spacing:3px">
+    THE ONE. THE ONLY.
+   </p>
+   <h1>THE RATHOD</h1>
+   <p>
+    No competition. No explanation.<br>
+    Just THE RATHOD. 😂
+    <br><br>
+    This award is exclusive and cannot be transferred.
+    Lifetime achievement unlocked! 🏆
+   </p>
+   <h2 style="color:#f5df65">Day 5 Complete! 💜</h2>
+  </div>
+ </div>
+
+ <a class="back" href="../index.html">← Back to surprises</a>
+</div>
+
+<script>
+function showAwards(){
+ document.getElementById("intro").style.display="none";
+ document.getElementById("awards").style.display="block";
+}
+
+function revealSpecial(){
+ document.getElementById("special").style.display="block";
+}
+</script>
+</body>
+</html>

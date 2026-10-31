@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 - Know Yourself</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:20px;display:flex;
+ align-items:center;justify-content:center;font-family:Arial,sans-serif;
+ color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)
+}
+.container{
+ width:100%;max-width:600px;padding:35px 25px;text-align:center;
+ border-radius:24px;background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,255,255,.15)
+}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1{color:#f5df65}
+.subtitle{color:#d8d4ec;line-height:1.7}
+.question{margin:30px 0 20px;font-size:21px}
+.options{display:grid;gap:12px}
+.option{
+ padding:15px;border-radius:12px;border:1px solid #625b88;
+ background:#29264b;color:white;cursor:pointer;font-size:15px
+}
+.option:hover{background:#48406f}
+.option:disabled{opacity:.8;cursor:default}
+#feedback{color:#f5df65;line-height:1.6;min-height:25px;margin-top:20px}
+.next{
+ display:none;margin-top:15px;padding:13px 25px;border:0;
+ border-radius:30px;background:#f5df65;color:#17172e;
+ font-weight:bold;cursor:pointer
+}
+#result{display:none;line-height:1.8}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+ <div id="quiz">
+  <div class="tag">DAY 03 · PERSONALITY CHECK</div>
+  <h1>Know Yourself 🧠</h1>
+  <p class="subtitle">
+   How well do you actually know yourself, Kannu?
+   Let's find out! 😂
+  </p>
+  <p id="counter">Question 1 of 5</p>
+  <h2 class="question" id="question"></h2>
+  <div class="options" id="options"></div>
+  <p id="feedback"></p>
+  <button class="next" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+ </div>
+
+ <div id="result">
+  <div class="tag">PERSONALITY REVEALED</div>
+  <h1>That's So You! 💜</h1>
+  <p>
+   Quiz complete! Pan Kannu, tu haju pan ek mystery chhe! 😂
+   <br><br>
+   Tu funny chhe, caring chhe, thodo pagal chhe...
+   and sometimes impossible to understand.
+   <br><br>
+   But that's what makes you YOU.
+  </p>
+  <h2 style="color:#f5df65">Never change, Paglu! ✨</h2>
+  <p>Day 3 complete. See you tomorrow!</p>
+ </div>
+ <a class="back" href="../index.html">← Back to surprises</a>
+</div>
+
+<script>
+const questions=[
+ {q:"1. What is your biggest weakness?",
+  options:["Overthinking 🤯","Getting angry 😤","Trusting people ❤️"],
+  feedback:"You may not admit it, but I think you overthink a lot!"},
+ {q:"2. Are you more pagal or samajdar?",
+  options:["100% Pagal 😂","Secretly samajdar 😎","Depends on the mood"],
+  feedback:"Honestly, both sides exist in you! 😂"},
+ {q:"3. Why do you rush in Free Fire?",
+  options:["No patience 😭","Full confidence 🔥","Just for fun 😂"],
+  feedback:"Your patience and rushing skills are from different planets!"},
+ {q:"4. What do you usually do when you're angry?",
+  options:["Stop talking 🤐","Get irritated 😤","Pretend nothing happened"],
+  feedback:"Sometimes you don't say much, but I know something is going on."},
+ {q:"5. How would your friends describe you?",
+  options:["Funny and pagal 😂","Caring and sweet 💜","Annoying but lovable 🥹"],
+  feedback:"A little bit of everything. That's our Kannu!"}
+];
+let currentQuestion=0;
+
+function showQuestion(){
+ const q=questions[currentQuestion];
+ document.getElementById("counter").textContent=
+  "Question "+(currentQuestion+1)+" of 5";
+ document.getElementById("question").textContent=q.q;
+ document.getElementById("feedback").textContent="";
+ document.getElementById("nextBtn").style.display="none";
+ const box=document.getElementById("options");
+ box.innerHTML="";
+ q.options.forEach(function(option){
+  const button=document.createElement("button");
+  button.className="option";
+  button.textContent=option;
+  button.onclick=function(){chooseAnswer(q.feedback)};
+  box.appendChild(button);
+ });
+}
+function chooseAnswer(feedback){
+ document.querySelectorAll(".option").forEach(b=>b.disabled=true);
+ document.getElementById("feedback").textContent=feedback;
+ document.getElementById("nextBtn").style.display="inline-block";
+}
+function nextQuestion(){
+ currentQuestion++;
+ if(currentQuestion<questions.length){showQuestion();}
+ else{
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("result").style.display="block";
+ }
+}
+showQuestion();
+</script>
+</body>
+</html>

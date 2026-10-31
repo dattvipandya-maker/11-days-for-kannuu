@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 9 - Open When You Need It</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:20px;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:white;background:linear-gradient(135deg,#10152f,#30234e,#171b38)}
+.container{width:100%;max-width:600px;padding:35px 25px;text-align:center;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15)}
+.tag{color:#f5df65;letter-spacing:3px;font-size:12px}
+h1,h2{color:#f5df65}
+p{color:#d8d4ec;line-height:1.8}
+.envelope{font-size:75px;margin:20px}
+button{padding:14px 25px;border:0;border-radius:30px;background:#f5df65;color:#17172e;font-weight:bold;cursor:pointer}
+#letter{display:none;text-align:left;margin-top:25px;padding:25px;border-radius:16px;background:rgba(255,255,255,.06);line-height:1.9;animation:open .8s ease}
+@keyframes open{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.back{display:block;margin-top:25px;color:#d8d4ec;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="tag">DAY 09 · A LITTLE LETTER</div>
+<div class="envelope">💌</div>
+<h1>Open When You Need It</h1>
+<p>For the days when things feel a little too much...</p>
+<button onclick="openLetter()">Open Your Letter ✨</button>
+<div id="letter">
+<h2>Hey Kannu, 💜</h2>
+<p>
+If you're reading this, maybe today isn't going exactly the way you wanted.
+<br><br>
+So here's a small reminder: you don't have to figure everything out at once. Take a breath, give yourself some time, and don't be too hard on yourself.
+<br><br>
+You're allowed to have bad days. You're allowed to feel tired. And you're allowed to ask for help when you need it.
+<br><br>
+Don't forget the good things about yourself just because one day feels difficult.
+<br><br>
+Keep being funny, keep being caring, and keep being your wonderfully pagal self. 😂
+<br><br>
+I hope life gives you plenty of reasons to smile. And whenever you need a little reminder, come back and read this again.
+<br><br>
+Take care of yourself, okay?
+<br><br>
+<strong style="color:#f5df65">Your friend, always cheering for you. 💜</strong>
+</p>
+</div>
+<a class="back" href="../index.html">← Back to surprises</a>
+</div>
+<script>
+function openLetter(){
+document.getElementById("letter").style.display="block";
+}
+</script>
+</body>
+</html>

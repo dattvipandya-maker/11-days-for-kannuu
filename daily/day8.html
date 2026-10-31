@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 8 - Our Memory</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #10152f, #30234e, #171b38);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.tag {
+    color: #f5df65;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+h1 {
+    color: #f5df65;
+}
+
+p {
+    color: #d8d4ec;
+    line-height: 1.7;
+}
+
+#puzzle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 100%;
+    max-width: 360px;
+    margin: 25px auto;
+}
+
+.piece {
+    aspect-ratio: 1;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    background-image: url('../assets/photos/p3.jpeg.jpeg');
+    background-size: 300% 300%;
+}
+
+.piece.selected {
+    border: 3px solid #f5df65;
+    filter: brightness(0.65);
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 30px;
+    background: #f5df65;
+    color: #17172e;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#message {
+    color: #f5df65;
+    min-height: 25px;
+}
+
+#complete {
+    display: none;
+    margin-top: 20px;
+    animation: reveal 1s ease;
+}
+
+#complete img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.back {
+    display: block;
+    margin-top: 25px;
+    color: #d8d4ec;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="tag">DAY 08 · A MEMORY TO PUT TOGETHER</div>
+
+    <h1>Our Memory 🧩</h1>
+
+    <p>
+        Some memories are worth putting together,
+        piece by piece. 💜
+        <br>
+        Tap any two pieces to swap them and complete the picture!
+    </p>
+
+    <div id="puzzle"></div>
+
+    <p id="message">
+        Find the right place for every piece!
+    </p>
+
+    <button onclick="shufflePuzzle()">
+        Shuffle Again ↻
+    </button>
+
+    <div id="complete">
+        <h2 style="color:#f5df65">Memory Unlocked! 💜</h2>
+
+        <img
+            src="../assets/photos/p3.jpeg.jpeg"
+            alt="Our original memory"
+        >
+
+        <p>
+            Some memories are worth putting together,
+            piece by piece. ✨
+        </p>
+    </div>
+
+    <a class="back" href="../index.html">
+        ← Back to surprises
+    </a>
+
+</div>
+
+<script>
+let pieces = [0,1,2,3,4,5,6,7,8];
+let selected = null;
+
+const puzzle = document.getElementById("puzzle");
+
+function drawPuzzle() {
+
+    puzzle.innerHTML = "";
+
+    pieces.forEach((value, index) => {
+
+        const piece = document.createElement("div");
+
+        piece.className = "piece";
+
+        if (selected === index) {
+            piece.classList.add("selected");
+        }
+
+        const x = (value % 3) * 50;
+        const y = Math.floor(value / 3) * 50;
+
+        piece.style.backgroundPosition = x + "% " + y + "%";
+
+        piece.onclick = function() {
+            selectPiece(index);
+        };
+
+        puzzle.appendChild(piece);
+    });
+}
+
+function selectPiece(index) {
+
+    if (selected === null) {
+
+        selected = index;
+
+        document.getElementById("message").textContent =
+            "Now tap another piece to swap!";
+
+    } else {
+
+        [pieces[selected], pieces[index]] =
+        [pieces[index], pieces[selected]];
+
+        selected = null;
+    }
+
+    drawPuzzle();
+
+    if (pieces.every((value, index) => value === index)) {
+
+        document.getElementById("message").textContent =
+            "You put the memory back together! 🎉";
+
+        document.getElementById("complete").style.display = "block";
+
+    } else if (selected === null) {
+
+        document.getElementById("message").textContent =
+            "Keep going, Kannu! 💜";
+    }
+}
+
+function shufflePuzzle() {
+
+    pieces = [0,1,2,3,4,5,6,7,8];
+
+    for (let i = pieces.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
+    }
+
+    if (pieces.every((value, index) => value === index)) {
+        [pieces[0], pieces[1]] = [pieces[1], pieces[0]];
+    }
+
+    selected = null;
+
+    document.getElementById("complete").style.display = "none";
+
+    document.getElementById("message").textContent =
+        "Find the right place for every piece!";
+
+    drawPuzzle();
+}
+
+shufflePuzzle();
+</script>
+
+</body>
+</html>
