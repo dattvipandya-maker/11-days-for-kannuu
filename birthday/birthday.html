@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Kannu!</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 15px;
+    font-family: Georgia, serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    background: linear-gradient(135deg,#10152f,#30234e,#171b38);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.tag {
+    color: #f5df65;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+h1 {
+    color: #f5df65;
+    font-size: clamp(35px,7vw,60px);
+}
+
+h2 {
+    color: #f5df65;
+}
+
+p {
+    color: #e1dced;
+    line-height: 1.9;
+}
+
+.hero {
+    padding: 65px 10px 45px;
+}
+
+.cake {
+    font-size: 85px;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-12px); }
+}
+
+button {
+    padding: 14px 26px;
+    border: 0;
+    border-radius: 30px;
+    background: #f5df65;
+    color: #17172e;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    transform: scale(1.04);
+}
+
+/* Floating hearts */
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 5;
+    pointer-events: none;
+    animation: floatHeart 5s linear forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(.4) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    100% {
+        transform: translateY(-110vh) scale(1.3) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* Heart pop out */
+
+.heartBurst {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    z-index: 6;
+    font-size: 35px;
+    pointer-events: none;
+    animation: popHeart 1.5s ease-out forwards;
+}
+
+@keyframes popHeart {
+    0% {
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(.2);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1.6);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%,-150%) scale(1);
+    }
+}
+
+/* Polaroid Gallery */
+
+.gallery-section {
+    padding: 35px 5px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin: 35px auto;
+}
+
+.polaroid {
+    width: 210px;
+    padding: 10px 10px 18px;
+    background: #f8f4ed;
+    border-radius: 3px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    transition: transform .3s ease;
+}
+
+.polaroid:nth-child(1) {
+    transform: rotate(-7deg);
+}
+
+.polaroid:nth-child(2) {
+    transform: rotate(4deg);
+}
+
+.polaroid:nth-child(3) {
+    transform: rotate(-3deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.07);
+    z-index: 2;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background: #e8e2e8;
+}
+
+.polaroid p {
+    color: #29213c;
+    margin: 12px 0 0;
+    font-family: Georgia, serif;
+    font-size: 14px;
+}
+
+/* Birthday Letter */
+
+.letter-section {
+    padding: 35px 5px;
+}
+
+.envelope {
+    font-size: 75px;
+    margin: 20px;
+    animation: envelopeFloat 2s infinite ease-in-out;
+}
+
+@keyframes envelopeFloat {
+    50% { transform: translateY(-8px); }
+}
+
+#letter {
+    display: none;
+    max-width: 680px;
+    margin: 30px auto;
+    padding: 30px 25px;
+    text-align: left;
+    border: 1px solid rgba(245,223,101,.45);
+    border-radius: 18px;
+    background: linear-gradient(145deg,#29264b,#1b1d3a);
+    box-shadow: 0 15px 40px rgba(0,0,0,.3);
+    animation: letterOpen 1s ease;
+}
+
+@keyframes letterOpen {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.letterText {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 2;
+    color: #eee9f5;
+}
+
+.signature {
+    color: #f5df65;
+    font-weight: bold;
+}
+
+.footer {
+    padding: 40px 10px;
+    margin-top: 30px;
+}
+
+.footer h2 {
+    line-height: 1.6;
+}
+
+@media(max-width:480px) {
+    .polaroid {
+        width: 165px;
+    }
+
+    .polaroid img {
+        height: 165px;
+    }
+
+    #letter {
+        padding: 22px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Birthday Hero -->
+
+    <section class="hero">
+
+        <div class="tag">
+            NOVEMBER 11 · YOUR SPECIAL DAY
+        </div>
+
+        <div class="cake">🎂</div>
+
+        <h1>HAPPY BIRTHDAY,<br>KANNUUUUU!</h1>
+
+        <p>
+            The day we've been counting down to
+            is finally here! 🥳
+            <br>
+            11 days. 11 surprises.
+            And one very special person.
+        </p>
+
+        <button onclick="popHearts()">
+            A Little Birthday Surprise 💗
+        </button>
+
+    </section>
+
+
+    <!-- Polaroid Gallery -->
+
+    <section class="gallery-section">
+
+        <div class="tag">LITTLE MOMENTS · BIG MEMORIES</div>
+
+        <h2>A Few Little Memories 📸</h2>
+
+        <p>
+            Some moments deserve to be kept forever.
+        </p>
+
+        <div class="gallery">
+
+            <div class="polaroid">
+                <img src="../assets/photos/p2.jpeg.jpeg"
+                     alt="Memory one">
+                <p>A little moment 💜</p>
+            </div>
+
+            <div class="polaroid">
+                <img src="../assets/photos/p3.jpeg.jpeg"
+                     alt="Memory two">
+                <p>One for the memories ✨</p>
+            </div>
+
+            <div class="polaroid">
+                <img src="../assets/photos/p5.jpeg.jpeg"
+                     alt="Memory three">
+                <p>Forever a memory 🥹</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Birthday Letter -->
+
+    <section class="letter-section">
+
+        <div class="tag">SOMETHING FROM MY HEART</div>
+
+        <div class="envelope">💌</div>
+
+        <h2>A Letter For You</h2>
+
+        <p>
+            There are some things I wanted to tell you
+            on your special day...
+        </p>
+
+        <button onclick="openLetter()">
+            Open Your Letter 💌
+        </button>
+
+        <div id="letter">
+
+            <h2>Happiest Birthday, Kannnuuuuu! ❤️</h2>
+
+            <div class="letterText">
+
+                I hope ki taru aa year boooo saru jai.
+                Tu healthy rahe, happy rahe ane humesha
+                aavi j rite hasto rahe. 🥹
+
+                <br><br>
+
+                Aa 11 divas na nana-nana surprises thi
+                I hope tu khub khush thayo hase.
+                I really wanted to make your birthday
+                a little more special, even if I couldn't
+                be there with you.
+
+                <br><br>
+
+                Ane haan, badhu booo jaldi sarakhu thai jase,
+                etle please vadhare na vicharto.
+                As always, je hu tane kahu chhu e yaad rakhje.
+
+                <br><br>
+
+                Tari life ma ek manas evo hamesha hase
+                jene tari care hase, tari khushi ni chinta
+                hase ane je hamesha tara mate wish karse —
+                <strong>e hu hois.</strong> ❤️
+
+                <br><br>
+
+                No matter what, I'll always be your best friend.
+                I will always cheer for you, care for you
+                and wish the best for you.
+
+                <br><br>
+
+                <strong>
+                    I will be your best friend forever. ♾️💗
+                </strong>
+
+                <br><br>
+
+                Once again, Happiest Birthday Kannnuuuuu!
+                Stay happy, stay healthy and keep smiling always! 🫶
+
+                <br><br>
+
+                <div class="signature">
+                    Your Best Friend, Forever. 💜
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <section class="footer">
+
+        <div style="font-size:45px;">💜✨</div>
+
+        <h2>
+            11 Days.<br>
+            11 Surprises.<br>
+            One Special Kannu.
+        </h2>
+
+        <p>
+            Stay happy. Stay healthy.
+            Keep being you.
+        </p>
+
+        <div class="tag">
+            MADE WITH LOVE & FRIENDSHIP
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+// Floating hearts animation
+
+const heartSymbols = ["💗","💜","💕","❤️","✨"];
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (18 + Math.random()*22) + "px";
+    heart.style.animationDuration = (4 + Math.random()*3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },7000);
+}
+
+setInterval(createHeart,650);
+
+
+// Heart pop-out animation
+
+function popHearts() {
+
+    for(let i=0;i<18;i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heartBurst";
+        heart.textContent = heartSymbols[
+            Math.floor(Math.random()*heartSymbols.length)
+        ];
+
+        const angle = Math.random()*360;
+        const distance = 80 + Math.random()*160;
+
+        heart.style.left =
+            "calc(50% + " + Math.cos(angle*Math.PI/180)*distance + "px)";
+
+        heart.style.top =
+            "calc(40% + " + Math.sin(angle*Math.PI/180)*distance + "px)";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(),1600);
+    }
+}
+
+
+// Letter reveal
+
+function openLetter() {
+
+    const letter = document.getElementById("letter");
+
+    letter.style.display = "block";
+
+    letter.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    popHearts();
+}
+
+</script>
+
+</body>
+</html>
